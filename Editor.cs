@@ -29,26 +29,29 @@ namespace EditorHtml
             }while(Console.ReadKey().Key != ConsoleKey.Escape);
 
             Console.WriteLine("------------");
-            Console.WriteLine(" Deseja salvar o arquivo? 1 - Sim e 2 - Não");
-            // var option = short.Parse(Console.ReadLine());
+            Console.WriteLine(" Deseja salvar o arquivo? 1 - Sim , 2 - Não ou 3 - visualização");
+            
+            var option = short.Parse(Console.ReadLine());
 
-            // switch(option){
-            //     case 1: SalvarFile(file); break;
-            // }
+            switch(option){
+                case 1: SalvarFile(file.ToString()); break;
+                //Usando o ToString pra converte o file em string
+                case 3: Viewer.Show(file.ToString()); break;
+            }
         }
 
-        //Erro na implementação
-        // public static void SalvarFile(StringBuilder text)
-        // {
-        //     Console.Clear();
-        //     Console.WriteLine("Qual caminho para salvar o arquivo");
-        //     var path = Console.ReadLine();
 
-        //     using (var file = new StreamWriter(path))
-        //     {
-        //         file.Write(text);
-        //     }
-        // }
+        public static void SalvarFile(string text)
+        {
+            Console.Clear();
+            Console.WriteLine("Qual caminho para salvar o arquivo");
+            var path = Console.ReadLine();
+
+            using (var file = new StreamWriter(path))
+            {
+                file.Write(text);
+            }
+        }
 
     }
 }
